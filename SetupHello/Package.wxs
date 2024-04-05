@@ -1,9 +1,32 @@
-﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-  <Package Name="SetupHello" Manufacturer="TODO Manufacturer" Version="1.0.0.0" UpgradeCode="e0dc58a8-beb0-4a17-9e5a-b530ad2a2dce">
-    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+﻿<?define FileName= "etude-csharp-HeatWave_for_VS2022" ?>
 
-    <Feature Id="Main">
-      <ComponentGroupRef Id="ExampleComponents" />
-    </Feature>
-  </Package>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Package Name="SetupHello" Manufacturer="etude-csharp-HeatWave_for_VS2022" Version="1.0.0.0" UpgradeCode="e0dc58a8-beb0-4a17-9e5a-b530ad2a2dce">
+		<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+		<Media Id="1" Cabinet="app.cab" EmbedCab="yes" />
+		<Feature Id="Main">
+			<ComponentGroupRef Id="etude_csharp_HeatWave_for_VS2022Component" />
+		</Feature>
+		<!-- ユーザのデスクトップにショートカットを作成する記述。
+             DesktopFolderは事前定義されているフォルダ。
+             WorkingDirectoryにはDirectoryのIdを入れること。
+             Targetは [] で括ればDirectoryのIdも使用可能。絶対参照にすること。
+          -->
+		<StandardDirectory Id="DesktopFolder">
+			<Component Id="SoftDirDesktop" Guid="77784750-97E3-4EC3-B790-FA96CE5488FF">
+				<Shortcut Id="ExeFileDesk" Directory="DesktopFolder" Name="$(var.FileName)" WorkingDirectory="SoftDir" Target="[SoftDir]\\(自分で用意したEXEファイル名)" />
+				<RemoveFolder Id="SoftDirDesktop" On="uninstall" />
+			</Component>
+		</StandardDirectory>
+
+		<!-- スタートのすべてのアプリにショートカットを作成する記述。
+             ProgramMenuFolderは事前定義されているフォルダ。
+          -->
+		<StandardDirectory Id="ProgramMenuFolder">
+			<Component Id="SoftDirProgramMenu" Guid="E3B99CA8-BFED-4AA0-B28F-C266C5D3B479">
+				<Shortcut Id="ExeFileMenu" Directory="ProgramMenuFolder" Name="$(var.FileName)" WorkingDirectory="SoftDir" Target="[SoftDir]\\(自分で用意したEXEファイル名)" />
+				<RemoveFolder Id="SoftDirProgramMenu" On="uninstall" />
+			</Component>
+		</StandardDirectory>
+	</Package>
 </Wix>

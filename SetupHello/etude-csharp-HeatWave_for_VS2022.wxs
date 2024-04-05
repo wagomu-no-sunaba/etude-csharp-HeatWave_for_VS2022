@@ -1,0 +1,11 @@
+<?define MyTest= "C:\Users\wagomu\source\repos\wagomu-no-sunaba\etude-csharp-HeatWave_for_VS2022\etude-csharp-HeatWave_for_VS2022\bin\Release\net8.0-windows\publish\win-x86\etude-csharp-HeatWave_for_VS2022.exe" ?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Fragment>
+		<ComponentGroup Id="etude_csharp_HeatWave_for_VS2022Component" Directory="INSTALLFOLDER">
+			<Component Id="etude_csharp_HeatWave_for_VS2022.exe">
+				<File Source="$(var.MyTest)" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+
+</Wix>
