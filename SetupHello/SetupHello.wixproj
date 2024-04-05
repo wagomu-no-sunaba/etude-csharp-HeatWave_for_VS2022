@@ -1,2 +1,17 @@
 ﻿<Project Sdk="WixToolset.Sdk/4.0.5">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <BindFiles>true</BindFiles>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <BindFiles>true</BindFiles>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+    <BindFiles>true</BindFiles>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Package</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\etude-csharp-HeatWave_for_VS2022\etude-csharp-HeatWave_for_VS2022.csproj" />
+  </ItemGroup>
 </Project>
