@@ -1,0 +1,1 @@
+# etude-csharp-HeatWave_for_VS2022
